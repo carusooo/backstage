@@ -49,6 +49,9 @@
     "@backstage/cli": "^0.16.1-next.0",
     "jest": "^26.0.1"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "files": [
     "dist"
   ]
