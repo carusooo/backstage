@@ -1,5 +1,11 @@
 # @backstage/integration
 
+## 0.8.1
+
+### Patch Changes
+
+- 403837cbac: Added an integration for Gerrit
+
 ## 0.8.0
 
 ### Minor Changes

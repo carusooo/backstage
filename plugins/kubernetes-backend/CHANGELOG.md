@@ -1,5 +1,15 @@
 # @backstage/plugin-kubernetes-backend
 
+## 0.4.13
+
+### Patch Changes
+
+- dab7f8dbd3: build(deps): bump `@google-cloud/container` from 2.3.0 to 3.0.0
+- Updated dependencies
+  - @backstage/backend-common@0.13.1
+  - @backstage/catalog-model@0.14.0
+  - @backstage/plugin-kubernetes-common@0.2.8
+
 ## 0.4.12
 
 ### Patch Changes

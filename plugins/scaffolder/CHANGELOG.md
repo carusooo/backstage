@@ -1,5 +1,21 @@
 # @backstage/plugin-scaffolder
 
+## 0.15.1
+
+### Patch Changes
+
+- a422d7ce5e: chore(deps): bump `@testing-library/react` from 11.2.6 to 12.1.3
+- Updated dependencies
+  - @backstage/core-components@0.9.2
+  - @backstage/core-plugin-api@0.8.1
+  - @backstage/integration-react@0.1.26
+  - @backstage/plugin-catalog-react@0.10.0
+  - @backstage/plugin-permission-react@0.3.4
+  - @backstage/catalog-model@0.14.0
+  - @backstage/integration@0.8.1
+  - @backstage/catalog-client@0.9.1
+  - @backstage/plugin-scaffolder-common@0.3.1
+
 ## 0.15.0
 
 ### Minor Changes

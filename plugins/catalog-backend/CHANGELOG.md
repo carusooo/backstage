@@ -1,5 +1,36 @@
 # @backstage/plugin-catalog-backend
 
+## 0.25.0
+
+### Minor Changes
+
+- 02ad19d189: **BREAKING**: Removed the deprecated `metadata.generation` field entirely. It is no longer present in TS types, nor in the REST API output. Entities that have not yet been re-stitched may still have the field present for some time, but it will get phased out gradually by your catalog instance.
+- 7250b6993d: **BREAKING**: Removed the previously deprecated `results` export. Please use `processingResult` instead.
+- 077e7c132f: **BREAKING**: Removed the following deprecated symbols:
+
+  - `catalogBuilder.setRefreshInterval`, use `catalogBuilder.setProcessingInterval` instead.
+  - `catalogBuilder.setRefreshIntervalSeconds`, use `catalogBuilder.setProcessingIntervalSeconds` instead.
+  - `createRandomRefreshInterval`, use `createRandomProcessingInterval` instead.
+  - `RefreshIntervalFunction`, use `ProcessingIntervalFunction` instead.
+
+- ced3016f2a: **BREAKING**: The deprecated `CatalogEntityDocument` export has been removed, it can be imported from `@backstage/plugin-catalog-common` instead.
+- d3e9ec43b7: **BREAKING**: Removed the `target` property from `EntityRelation`. This field has been replaced by `targetRef`.
+  This means that `target: { name: 'team-a', kind: 'group', namespace: 'default' }` is now replaced with `targetRef: 'group:default/team-a'` in entity relations.
+
+  The entities API endpoint still return the old `target` field for to ease transitions, however the future removal of this field will be considered non breaking.
+
+### Patch Changes
+
+- 89c7e47967: Minor README update
+- 26fb159a30: Pass in auth token to ancestry endpoint
+- efc73db10c: Use `better-sqlite3` instead of `@vscode/sqlite3`
+- Updated dependencies
+  - @backstage/backend-common@0.13.1
+  - @backstage/catalog-model@0.14.0
+  - @backstage/integration@0.8.1
+  - @backstage/catalog-client@0.9.1
+  - @backstage/plugin-scaffolder-common@0.3.1
+
 ## 0.24.0
 
 ### Minor Changes

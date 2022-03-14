@@ -1,5 +1,16 @@
 # @backstage/plugin-jenkins-backend
 
+## 0.1.19
+
+### Patch Changes
+
+- 89c7e47967: Minor README update
+- Updated dependencies
+  - @backstage/backend-common@0.13.1
+  - @backstage/catalog-model@0.14.0
+  - @backstage/catalog-client@0.9.1
+  - @backstage/plugin-auth-node@0.1.6
+
 ## 0.1.18
 
 ### Patch Changes

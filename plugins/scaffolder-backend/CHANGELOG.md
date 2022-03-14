@@ -1,5 +1,18 @@
 # @backstage/plugin-scaffolder-backend
 
+## 0.18.1
+
+### Patch Changes
+
+- efc73db10c: Use `better-sqlite3` instead of `@vscode/sqlite3`
+- Updated dependencies
+  - @backstage/plugin-catalog-backend@0.25.0
+  - @backstage/backend-common@0.13.1
+  - @backstage/catalog-model@0.14.0
+  - @backstage/integration@0.8.1
+  - @backstage/catalog-client@0.9.1
+  - @backstage/plugin-scaffolder-common@0.3.1
+
 ## 0.18.0
 
 ### Minor Changes

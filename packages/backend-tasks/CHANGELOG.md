@@ -1,5 +1,13 @@
 # @backstage/backend-tasks
 
+## 0.2.1
+
+### Patch Changes
+
+- efc73db10c: Use `better-sqlite3` instead of `@vscode/sqlite3`
+- Updated dependencies
+  - @backstage/backend-common@0.13.1
+
 ## 0.2.0
 
 ### Minor Changes

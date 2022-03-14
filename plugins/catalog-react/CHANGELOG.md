@@ -1,5 +1,29 @@
 # @backstage/plugin-catalog-react
 
+## 0.10.0
+
+### Minor Changes
+
+- f7fb7295e6: **BREAKING**: Removed the deprecated `favoriteEntityTooltip` and `favoriteEntityIcon` functions.
+- 4cd92028b8: **BREAKING**: The following deprecated annotation reading helper functions were removed:
+
+  - `getEntityMetadataViewUrl`, use `entity.metadata.annotations?.[ANNOTATION_VIEW_URL]` instead.
+  - `getEntityMetadataEditUrl`, use `entity.metadata.annotations?.[ANNOTATION_EDIT_URL]` instead.
+
+- 0f3520d499: **BREAKING**: Removed the deprecated `formatEntityRefTitle`, use `humanizeEntityRef` instead.
+
+### Patch Changes
+
+- a422d7ce5e: chore(deps): bump `@testing-library/react` from 11.2.6 to 12.1.3
+- Updated dependencies
+  - @backstage/core-components@0.9.2
+  - @backstage/core-plugin-api@0.8.1
+  - @backstage/version-bridge@0.1.3
+  - @backstage/plugin-permission-react@0.3.4
+  - @backstage/catalog-model@0.14.0
+  - @backstage/integration@0.8.1
+  - @backstage/catalog-client@0.9.1
+
 ## 0.9.0
 
 ### Minor Changes

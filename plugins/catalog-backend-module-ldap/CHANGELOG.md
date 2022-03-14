@@ -1,5 +1,15 @@
 # @backstage/plugin-catalog-backend-module-ldap
 
+## 0.4.1
+
+### Patch Changes
+
+- a6c367d937: Add config support for LDAP search options.
+- Updated dependencies
+  - @backstage/plugin-catalog-backend@0.25.0
+  - @backstage/backend-tasks@0.2.1
+  - @backstage/catalog-model@0.14.0
+
 ## 0.4.0
 
 ### Minor Changes

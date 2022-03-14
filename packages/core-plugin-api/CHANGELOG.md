@@ -1,5 +1,13 @@
 # @backstage/core-plugin-api
 
+## 0.8.1
+
+### Patch Changes
+
+- a422d7ce5e: chore(deps): bump `@testing-library/react` from 11.2.6 to 12.1.3
+- Updated dependencies
+  - @backstage/version-bridge@0.1.3
+
 ## 0.8.0
 
 ### Minor Changes

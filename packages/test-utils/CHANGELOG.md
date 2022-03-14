@@ -1,5 +1,15 @@
 # @backstage/test-utils
 
+## 0.3.1
+
+### Patch Changes
+
+- a422d7ce5e: chore(deps): bump `@testing-library/react` from 11.2.6 to 12.1.3
+- Updated dependencies
+  - @backstage/core-app-api@0.6.1
+  - @backstage/core-plugin-api@0.8.1
+  - @backstage/plugin-permission-react@0.3.4
+
 ## 0.3.0
 
 ### Minor Changes

@@ -1,5 +1,17 @@
 # @backstage/plugin-todo
 
+## 0.2.5
+
+### Patch Changes
+
+- 89c7e47967: Minor README update
+- a422d7ce5e: chore(deps): bump `@testing-library/react` from 11.2.6 to 12.1.3
+- Updated dependencies
+  - @backstage/core-components@0.9.2
+  - @backstage/core-plugin-api@0.8.1
+  - @backstage/plugin-catalog-react@0.10.0
+  - @backstage/catalog-model@0.14.0
+
 ## 0.2.4
 
 ### Patch Changes

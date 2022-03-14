@@ -1,5 +1,13 @@
 # @backstage/plugin-azure-devops-backend
 
+## 0.3.9
+
+### Patch Changes
+
+- 89c7e47967: Minor README update
+- Updated dependencies
+  - @backstage/backend-common@0.13.1
+
 ## 0.3.8
 
 ### Patch Changes
