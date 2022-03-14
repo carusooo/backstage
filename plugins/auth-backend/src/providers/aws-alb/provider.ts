@@ -27,7 +27,7 @@ import * as crypto from 'crypto';
 import { KeyObject } from 'crypto';
 import { Logger } from 'winston';
 import NodeCache from 'node-cache';
-import { JWT } from 'jose';
+import { JWTHeaderParameters, jwtVerify } from 'jose';
 import { TokenIssuer } from '../../identity/types';
 import { CatalogIdentityClient } from '../../lib/catalog';
 import { Profile as PassportProfile } from 'passport';
@@ -150,9 +150,8 @@ export class AwsAlbAuthProvider implements AuthProviderRouteHandlers {
     }
 
     try {
-      const headers = getJWTHeaders(jwt);
-      const key = await this.getKey(headers.kid);
-      const claims = JWT.verify(jwt, key) as AwsAlbClaims;
+      const verifyResult = await jwtVerify(jwt, this.getKey);
+      const claims = verifyResult.payload as AwsAlbClaims;
 
       if (this.issuer && claims.iss !== this.issuer) {
         throw new AuthenticationError('Issuer mismatch on JWT token');
@@ -206,16 +205,22 @@ export class AwsAlbAuthProvider implements AuthProviderRouteHandlers {
     };
   }
 
-  async getKey(keyId: string): Promise<KeyObject> {
-    const optionalCacheKey = this.keyCache.get<KeyObject>(keyId);
+  async getKey(header: JWTHeaderParameters): Promise<KeyObject> {
+    if (!header.kid) {
+      throw new AuthenticationError('No key id was specified in header');
+    }
+    const optionalCacheKey = this.keyCache.get<KeyObject>(header.kid);
     if (optionalCacheKey) {
       return crypto.createPublicKey(optionalCacheKey);
     }
     const keyText: string = await fetch(
-      `https://public-keys.auth.elb.${this.region}.amazonaws.com/${keyId}`,
+      `https://public-keys.auth.elb.${this.region}.amazonaws.com/${header.kid}`,
     ).then(response => response.text());
     const keyValue = crypto.createPublicKey(keyText);
-    this.keyCache.set(keyId, keyValue.export({ format: 'pem', type: 'spki' }));
+    this.keyCache.set(
+      header.kid,
+      keyValue.export({ format: 'pem', type: 'spki' }),
+    );
     return keyValue;
   }
 }

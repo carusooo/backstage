@@ -26,7 +26,7 @@ import {
   AuthResponse,
 } from '../types';
 import { CatalogIdentityClient } from '../../lib/catalog';
-import { JWT } from 'jose';
+import { decodeJwt } from 'jose';
 import { TokenIssuer } from '../../identity/types';
 import { prepareBackstageIdentityResponse } from '../prepareBackstageIdentityResponse';
 
@@ -164,7 +164,7 @@ export class Oauth2ProxyAuthProvider<JWTPayload>
       );
     }
 
-    const decodedJWT = JWT.decode(jwt) as unknown as JWTPayload;
+    const decodedJWT = decodeJwt(jwt) as unknown as JWTPayload;
 
     return {
       fullProfile: decodedJWT,
