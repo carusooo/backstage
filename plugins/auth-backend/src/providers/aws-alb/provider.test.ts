@@ -15,7 +15,7 @@
  */
 import { getVoidLogger } from '@backstage/backend-common';
 import express from 'express';
-import { JWT } from 'jose';
+import { jwtVerify } from 'jose';
 
 import {
   ALB_ACCESS_TOKEN_HEADER,
@@ -26,7 +26,7 @@ import { TokenIssuer } from '../../identity/types';
 import { CatalogIdentityClient } from '../../lib/catalog';
 import { makeProfileInfo } from '../../lib/passport';
 
-const jwtMock = JWT as jest.Mocked<any>;
+const jwtMock = jwtVerify as jest.Mocked<any>;
 
 const mockKey = async () => {
   return `-----BEGIN PUBLIC KEY-----
@@ -129,7 +129,7 @@ describe('AwsAlbAuthProvider', () => {
         },
       });
 
-      jwtMock.verify.mockReturnValueOnce(mockClaims);
+      jwtMock.mockReturnValueOnce(Promise.resolve({ payload: mockClaims }));
 
       await provider.refresh(mockRequest, mockResponse);
 
@@ -212,7 +212,7 @@ describe('AwsAlbAuthProvider', () => {
         },
       });
 
-      jwtMock.verify.mockImplementationOnce(() => {
+      jwtMock.mockImplementationOnce(() => {
         throw new Error('bad JWT');
       });
 
@@ -236,7 +236,7 @@ describe('AwsAlbAuthProvider', () => {
         },
       });
 
-      jwtMock.verify.mockReturnValueOnce({});
+      jwtMock.mockReturnValueOnce({});
 
       await provider.refresh(mockRequest, mockResponse);
       expect(mockResponse.status).toHaveBeenCalledWith(401);
@@ -257,7 +257,7 @@ describe('AwsAlbAuthProvider', () => {
         },
       });
 
-      jwtMock.verify.mockReturnValueOnce({
+      jwtMock.mockReturnValueOnce({
         iss: 'INVALID_ISSUE_URL',
       });
 
@@ -280,7 +280,7 @@ describe('AwsAlbAuthProvider', () => {
         },
       });
 
-      jwtMock.verify.mockReturnValueOnce(mockClaims);
+      jwtMock.mockReturnValueOnce(mockClaims);
 
       await provider.refresh(mockRequest, mockResponse);
 
@@ -303,7 +303,7 @@ describe('AwsAlbAuthProvider', () => {
         },
       });
 
-      jwtMock.verify.mockReturnValueOnce(mockClaims);
+      jwtMock.mockReturnValueOnce(mockClaims);
 
       await provider.refresh(mockRequest, mockResponse);
 

@@ -79,7 +79,9 @@ describe('ServerPermissionClient', () => {
   });
 
   it('should bypass authorization if permissions are enabled and request has valid server token', async () => {
-    const tokenManager = ServerTokenManager.fromConfig(config, { logger });
+    const tokenManager = await ServerTokenManager.fromConfig(config, {
+      logger,
+    });
     const client = ServerPermissionClient.fromConfig(config, {
       discovery,
       tokenManager,
@@ -93,7 +95,9 @@ describe('ServerPermissionClient', () => {
   });
 
   it('should authorize normally if permissions are enabled and request does not have valid server token', async () => {
-    const tokenManager = ServerTokenManager.fromConfig(config, { logger });
+    const tokenManager = await ServerTokenManager.fromConfig(config, {
+      logger,
+    });
     const client = ServerPermissionClient.fromConfig(config, {
       discovery,
       tokenManager,
