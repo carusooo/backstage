@@ -35,6 +35,8 @@ import {
   Identified,
   AuthorizeRequest,
   AuthorizeResponse,
+  isResourcePermission,
+  PermissionAttributes,
 } from '@backstage/plugin-permission-common';
 import {
   ApplyConditionsRequestEntry,
@@ -46,23 +48,35 @@ import { memoize } from 'lodash';
 import DataLoader from 'dataloader';
 import { Config } from '@backstage/config';
 
+const attributesSchema: z.ZodSchema<PermissionAttributes> = z.object({
+  action: z
+    .union([
+      z.literal('create'),
+      z.literal('read'),
+      z.literal('update'),
+      z.literal('delete'),
+    ])
+    .optional(),
+});
+
+const permissionSchema = z.union([
+  z.object({
+    type: z.literal('basic'),
+    name: z.string(),
+    attributes: attributesSchema,
+  }),
+  z.object({
+    type: z.literal('resource'),
+    name: z.string(),
+    attributes: attributesSchema,
+    resourceType: z.string(),
+  }),
+]);
+
 const querySchema: z.ZodSchema<Identified<AuthorizeQuery>> = z.object({
   id: z.string(),
   resourceRef: z.string().optional(),
-  permission: z.object({
-    name: z.string(),
-    resourceType: z.string().optional(),
-    attributes: z.object({
-      action: z
-        .union([
-          z.literal('create'),
-          z.literal('read'),
-          z.literal('update'),
-          z.literal('delete'),
-        ])
-        .optional(),
-    }),
-  }),
+  permission: permissionSchema,
 });
 
 const requestSchema: z.ZodSchema<AuthorizeRequest> = z.object({
@@ -107,6 +121,12 @@ const handleRequest = async (
             id,
             ...decision,
           };
+        }
+
+        if (!isResourcePermission(request.permission)) {
+          throw new Error(
+            `Conditional decision returned from permission policy for non-resource permission ${request.permission.name}`,
+          );
         }
 
         if (decision.resourceType !== request.permission.resourceType) {
