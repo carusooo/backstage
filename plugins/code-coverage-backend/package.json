@@ -46,6 +46,9 @@
     "supertest": "^6.1.6",
     "xml2js": "^0.4.23"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "files": [
     "dist",
     "migrations/**/*.{js,d.ts}"

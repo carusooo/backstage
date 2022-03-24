@@ -36,6 +36,9 @@
   "devDependencies": {
     "@backstage/cli": "^0.16.1-next.0"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "files": [
     "dist",
     "migrations/**/*.{js,d.ts}"

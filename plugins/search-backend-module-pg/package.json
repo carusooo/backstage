@@ -33,6 +33,9 @@
     "@backstage/backend-test-utils": "^0.1.23-next.0",
     "@backstage/cli": "^0.16.1-next.0"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "files": [
     "dist",
     "migrations"

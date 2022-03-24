@@ -83,6 +83,9 @@
     "wait-for-expect": "^3.0.2",
     "luxon": "^2.0.2"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "files": [
     "dist",
     "alpha",

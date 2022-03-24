@@ -64,6 +64,9 @@
     "aws-sdk-mock": "^5.2.1",
     "bdd-lazy-var": "^2.6.0"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "files": [
     "dist",
     "schema.d.ts"

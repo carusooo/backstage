@@ -54,6 +54,9 @@
     "jest": "^26.0.1",
     "wait-for-expect": "^3.0.2"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "files": [
     "dist",
     "migrations/**/*.{js,d.ts}"

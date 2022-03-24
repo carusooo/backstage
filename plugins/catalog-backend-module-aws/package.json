@@ -50,6 +50,9 @@
     "aws-sdk-mock": "^5.2.1",
     "yaml": "^1.9.2"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "files": [
     "dist",
     "config.d.ts"

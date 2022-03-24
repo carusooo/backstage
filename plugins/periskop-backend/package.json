@@ -40,6 +40,9 @@
     "msw": "^0.35.0",
     "supertest": "^6.1.6"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "files": [
     "dist"
   ]
